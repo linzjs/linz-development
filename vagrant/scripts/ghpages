@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# a script to start the ghpages site locally
+sudo /bin/bash -c "cd /ghpages/src && bundle exec jekyll serve --source /ghpages/src --destination /ghpages/build"
