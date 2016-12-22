@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  app:
+    build: ./app
+    environment:
+      - "NODE_ENV=development"
+      - "DB_HOST=db"
+    ports:
+      - 4000:4000
+  static:
+    build: ./static
+    ports:
+      - 80:80
+      - 443:443
+  db:
+    build: ./db
+    volumes:
+      - dbvolume:/data/mongodb
+    ports:
+      - 27017:27017
+
+volumes:
+  dbvolume:
+    driver: local

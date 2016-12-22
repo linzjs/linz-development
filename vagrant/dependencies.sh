@@ -14,6 +14,10 @@ configure_dependencies() {
         ln -s /vagrant/vagrant/scripts/docker-clean-images.sh /usr/local/bin/docker-clean-images
     fi
 
+    if [ ! -e /usr/lib/node_modules/linz ]; then
+        ln -s /linz /usr/lib/node_modules/linz
+    fi
+
     # install gulp
     npm install -g gulp
 

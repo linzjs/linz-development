@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv sh
+
+# unless this has already been defined, set
+if [ ! -e /tmp/nginx ]; then
+    mkdir -p /tmp/nginx
+    chown nginx:nginx /tmp/nginx
+fi
