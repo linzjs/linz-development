@@ -1,28 +1,27 @@
 #!/usr/bin/env bash
 
-if [ ! -e /etc/vagrant/apt-get ]
-then
+source /vagrant/vagrant/bashurator/init.sh
 
-	echo ">>> setting up apt-get"
+# Setup the environment.
+configure_apt_get() {
 
-	# Required for nodejs
-	curl -sL https://deb.nodesource.com/setup | sudo bash -
+    # Required for nodejs
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-	# Required for mongodb
-	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-	echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list
+    # Required for mongodb
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+    echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
 
-	# Required for add-apt-repository
-	apt-get install -y software-properties-common build-essential
+    # Required for the latest Git
+    add-apt-repository ppa:git-core/ppa
 
-	# update apt-get
-	apt-get update
+    # Required for add-apt-repository
+    apt-get install -y software-properties-common build-essential
 
-	# only run once
-	touch /etc/vagrant/apt-get
+    # update apt-get
+    apt-get update
 
-else
+}
 
-	echo ">>> apt-get is already setup..."
-
-fi
+# Execute the function above, in an idempotent function.
+bashurator.configure "apt-get" configure_apt_get

@@ -4,22 +4,22 @@ A complete development environment for Linz. All in a few commands.
 
 This development environment uses a virtual machine on your host to provide everything you'll need to start developing on Linz. It will install Ubuntu 14.04 and a bunch of other tools required for Linz development. This setup provides support for editing both Linz, and Linz's documentation.
 
-The only requirement of your host machine is Git, and an editor (of course, you could always use something Vim inside the VM itself).
+The only requirement of your host machine is Git, and an editor (of course, you could always use something like Vim inside the VM itself).
 
 Once you've set everything up, the development workflow is a little bit like this:
 
 - [host]    Create a new branch on your forked version of Linz.
 - [host]    Make some changes to Linz.
-- [host]    `vagrant ssh`
-- [vm]      `cd /vagrant`
-- [vm]      `/website/run`
-- [host]    In your browser, access test website at http://192.168.200.6 and test your changes
+- [host]    `vagrant ssh`.
+- [vm]      `cd /vagrant`.
+- [vm]      `/website/run`.
+- [host]    In your browser, access test website at http://192.168.200.6 and test your changes.
 
 Once you're satisfied:
 
-- [vm]      `./test`
-- [host]    If you get a green light from testing, `git commit -m "I've built something fantastic for Linz."`
-- [host]    `git push`
+- [vm]      `./test`.
+- [host]    If you get a green light from testing, `git commit -m "I've built something fantastic for Linz."`.
+- [host]    `git push`.
 
 Then raise a PR on GitHub :)
 
@@ -29,22 +29,20 @@ That is the most simple test case. Of course, you can develop Linz alongside any
 
 In order to get started, you'll need the following:
 
-- (Vagrant)[https://www.vagrantup.com/]
-- (VMWare)[http://www.vmware.com/] or (VirtualBox)[https://www.virtualbox.org/]
-- A (GitHub)[https://github.com/] account
-- Git on your host
+- [Vagrant](https://www.vagrantup.com/).
+- [VMWare](http://www.vmware.com/]) or [VirtualBox](https://www.virtualbox.org/).
+- A [GitHub](https://github.com/) account.
+- Git on your host.
 
 ## Getting started
 
-- Make a clone of the (Linz development repository)[https://github.com/smebberson/linz-development]
-- Make a clone of the (Linz repository)[https://github.com/smebberson/linz] into a directory called `linz` (alongside the `linz-development` directory from the line above)
-- Make another clone of the Linz repository into a directory called `linz-ghpages` (again, alongisde the `linz-development` directory from the line above)
-- Change into the directory where you cloned the `linz-development` repository
-- Start your VM by running `vagrant up --provider=vmware_fusion` (change `vmware_fusion` with which provider you like)
+- Make a clone of the [Linz development repository](https://github.com/smebberson/linz-development).
+- Make a clone of the [Linz repository](https://github.com/smebberson/linz) into a directory called `linz` (alongside the `linz-development` directory from the line above).
+- Start your VM by running `vagrant up --provider=vmware_fusion` (change `vmware_fusion` with whichever provider you like).
 
-After a while, you should have a VM read to go.
+After a while, you should have a VM ready to go.
 
-The source is always available on your host machine, and should be the primary place for interacting with the repository via Git, or editing the source in your favourite editor. Everything else like running Jekyll (for the documentation website), any build scripts and test scripts will happen inside the VM.
+The source is always available on your host machine, and should be the primary place for interacting with the repository via Git, or editing the source in your favourite editor. Everything else such as any build and test scripts will happen inside the VM.
 
 ## License
 

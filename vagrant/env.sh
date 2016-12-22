@@ -1,22 +1,14 @@
 #!/usr/bin/env bash
 
-if [ ! -e /etc/vagrant/env ]
-then
+source /vagrant/vagrant/bashurator/init.sh
 
-	echo ">>> setting up environment variables"
+# Setup the environment.
+configure_env() {
 
-	# make the env-create.sh executable
-	chmod a+x /vagrant/vagrant/scripts/env
-	/vagrant/vagrant/scripts/env
+    cat "/vagrant/vagrant/config/env.sh" >> "/etc/profile.d/development.sh"
+    chmod a+x "/etc/profile.d/development.sh"
 
-	# now source them into the current terminal session
-	. /etc/profile.d/linz_development.sh
+}
 
-	# only run once
-	touch /etc/vagrant/env
-
-else
-
-	echo ">>> environment varirables are already setup"
-
-fi
+# Execute the function above, in an idempotent function.
+bashurator.configure "env" configure_env

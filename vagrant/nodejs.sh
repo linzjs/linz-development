@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
 
-if [ ! -e /etc/vagrant/nodejs ]
-then
+source /vagrant/vagrant/bashurator/init.sh
 
-	echo ">>> setting up nodejs"
+# Setup the environment.
+configure_nodejs() {
 
-	# install nodejs
-	apt-get install -y nodejs
+    # install nodejs
+    apt-get install -y nodejs
 
-	# only run once
-	touch /etc/vagrant/nodejs
+    # upgrade npm to the latest
+    npm -g install npm@latest
 
-else
+}
 
-	echo ">>> nodejs already setup..."
-
-fi
+# Execute the function above, in an idempotent function.
+bashurator.configure "nodejs" configure_nodejs
