@@ -61,12 +61,25 @@ You should now be able to visit http://dev.linz.local. Visit http://dev.linz.loc
 
 A local version of readthedocs.org is setup, so that the documentation can be reviewed locally for errors, before committing to the repository.
 
+You only need to do the following once:
+
+- [host]    `vagrant ssh` to gain access to the guest VM.
+- [vm]      `cd /vagrant` (everything happens from this directory).
+- [vm]      `npm install` to install all NPM modules (i.e. Gulp).
+
+Do the following every time:
+
 - [host]    `vagrant ssh` to gain access to the guest VM.
 - [vm]      `cd /vagrant` (everything happens from this directory).
 - [vm]      `dc build` to build the Docker containers.
 - [vm]      `dc up -d && dc logs -f` to start the Docker containers, and tail the logs.
 
 You should now be able to visit http://docs.linz.local:8043 to browse the documentation.
+In another terminal window, to automatically rebuild the documentation on file change:
+
+- [host]    `vagrant ssh` to gain access to the guest VM.
+- [vm]      `cd /vagrant` (everything happens from this directory).
+- [vm]      `gulp build-docs-watch` to rebuild the documentation.
 
 ## License
 
