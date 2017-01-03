@@ -19,7 +19,22 @@ services:
       - dbvolume:/data/mongodb
     ports:
       - 27017:27017
+  rtd:
+    build: ./rtd
+    volumes:
+      - /linz/docs:/doc/src
+      - rtdbuild:/doc/_build/html
+    command: 'watch'
+  docs:
+    image: pierrezemb/gostatic
+    ports:
+      - 8043:8043
+    volumes:
+      - rtdbuild:/srv/http
+    command: --forceHTTP
 
 volumes:
   dbvolume:
+    driver: local
+  rtdbuild:
     driver: local

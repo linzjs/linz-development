@@ -36,11 +36,11 @@ In order to get started, you'll need the following:
 
 ## Getting started
 
-- Execute `sudo sh -c 'printf "192.168.200.6\tdev.linz.local\n" >> /etc/hosts'` so that `dev.linz.local` resolves to this VM.
+- Execute `sudo sh -c 'printf "192.168.200.6\tdev.linz.local\n192.168.200.6\tdocs.linz.local\n" >> /etc/hosts'` so that `dev.linz.local` and `docs.linz.local` resolves to the guest VM.
 - Make a clone of the [Linz development repository](https://github.com/smebberson/linz-development).
 - Make a clone of the [Linz repository](https://github.com/smebberson/linz) into a directory called `linz` (alongside the `linz-development` directory from the line above).
 - Make a clone of the [linz-minitwitter-basic repository](https://github.com/smebberson/linz-minitwitter-basic) into a directory called `linz-minitwitter-basic` (alongside the `linz-development` directory from the line above).
-- Start your VM by running `vagrant up --provider=vmware_fusion` (change `vmware_fusion` with whichever provider you like).
+- Start your VM by running `vagrant up --provider=virtualbox`.
 
 After a while, you should have a VM ready to go.
 
@@ -56,6 +56,17 @@ linz-minitwitter-basic is a good example of a basic Linz.js website. It's also t
 - [vm]      `dc up -d && dc logs -f` to start the Docker containers, and tail the logs.
 
 You should now be able to visit http://dev.linz.local. Visit http://dev.linz.local/bootstrap-users to create a default user within Linz with a username of `test` and `password` has been created for you. To log into Linz visit http://dev.linz.local/admin, enter the username and password and hit `Sign-in`.
+
+## Viewing the documentation
+
+A local version of readthedocs.org is setup, so that the documentation can be reviewed locally for errors, before committing to the repository.
+
+- [host]    `vagrant ssh` to gain access to the guest VM.
+- [vm]      `cd /vagrant` (everything happens from this directory).
+- [vm]      `dc build` to build the Docker containers.
+- [vm]      `dc up -d && dc logs -f` to start the Docker containers, and tail the logs.
+
+You should now be able to visit http://docs.linz.local:8043 to browse the documentation.
 
 ## License
 
