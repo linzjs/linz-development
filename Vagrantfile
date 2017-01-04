@@ -42,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # config.vm.synced_folder ".", "/vagrant", type: 'nfs'
     config.vm.synced_folder ".", "/vagrant", type: 'nfs'
     config.vm.synced_folder "../linz", "/linz", type: 'nfs'
-    config.vm.synced_folder "../linz-minitwitter-basic/app", "/vagrant/app/root/app"
+    config.vm.synced_folder "../linz-minitwitter-basic/app", "/vagrant/app/root/app", type: 'nfs'
 
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
