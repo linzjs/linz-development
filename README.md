@@ -79,7 +79,7 @@ In another terminal window, to automatically rebuild the documentation on file c
 
 - [host]    `vagrant ssh` to gain access to the guest VM.
 - [vm]      `cd /vagrant` (everything happens from this directory).
-- [vm]      `gulp build-docs-watch` to rebuild the documentation.
+- [vm]      `gulp docs-build-watch` to rebuild the documentation.
 
 ## License
 
