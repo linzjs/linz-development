@@ -52,6 +52,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # using a specific IP.
     config.vm.network 'private_network', type: 'dhcp'
 
+    ip = ''
+
     # Setup hostmanager for dhcp.
     if Vagrant.has_plugin?('vagrant-hostmanager')
         config.hostmanager.aliases = %W(#{vm_ext_conf['aliases'].compact.join(' ')})
@@ -60,7 +62,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.hostmanager.manage_host = true
 
         # Dynamically determine the IP address of the VM.
-        ip = ''
         config.hostmanager.ip_resolver = proc do |vm, resolving_vm|
             if hostname = (vm.ssh_info && vm.ssh_info[:host])
                 vm.communicate.execute("/bin/hostname -I | cut -d ' ' -f 2") do |type, contents|
@@ -69,9 +70,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             end
             ip
         end
-      else
+    else
         fail_with_message "vagrant-hostmanager missing, please install the plugin with this command:\nvagrant plugin install vagrant-hostmanager"
-      end
+    end
 
     # If true, then any SSH connections made will enable agent forwarding.
     # Default value: false
