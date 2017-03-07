@@ -1,6 +1,6 @@
 {
     "hostname": "linz-dev.localhost",
-    "ip": "192.168.200.6",
+    "aliases": ["dev.linz.local", "docs.linz.local"],
     "memory": 1024,
     "cpus": 1,
     "env": {

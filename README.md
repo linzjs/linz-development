@@ -13,7 +13,7 @@ Once you've set everything up, the development workflow is a little bit like thi
 - [host]    `vagrant ssh`.
 - [vm]      `cd /vagrant`.
 - [vm]      `/website/run`.
-- [host]    In your browser, access test website at http://192.168.200.6 and test your changes.
+- [host]    In your browser, access test website at http://dev.linz.local and test your changes.
 
 Once you're satisfied:
 
@@ -31,12 +31,12 @@ In order to get started, you'll need the following:
 
 - [Vagrant](https://www.vagrantup.com/).
 - [VMWare](http://www.vmware.com/]) or [VirtualBox](https://www.virtualbox.org/).
+- [vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager/)
 - A [GitHub](https://github.com/) account.
 - Git on your host.
 
 ## Getting started
 
-- Execute `sudo sh -c 'printf "192.168.200.6\tdev.linz.local\n192.168.200.6\tdocs.linz.local\n" >> /etc/hosts'` so that `dev.linz.local` and `docs.linz.local` resolves to the guest VM.
 - Make a clone of the [Linz development repository](https://github.com/smebberson/linz-development).
 - Make a clone of the [Linz repository](https://github.com/smebberson/linz) into a directory called `linz` (alongside the `linz-development` directory from the line above).
 - Make a clone of the [linz-minitwitter-basic repository](https://github.com/smebberson/linz-minitwitter-basic) into a directory called `linz-minitwitter-basic` (alongside the `linz-development` directory from the line above).

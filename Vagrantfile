@@ -6,6 +6,10 @@ VAGRANTFILE_API_VERSION = "2"
 
 require "json"
 
+def fail_with_message(msg)
+  fail Vagrant::Errors::VagrantError.new, msg
+end
+
 # Load in external config
 config_file = "#{File.dirname(__FILE__)}/vagrant.json"
 vm_ext_conf = JSON.parse(File.read(config_file))
@@ -46,10 +50,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
-    config.vm.network "private_network", ip: vm_ext_conf["ip"]
-    # Or allow network wide access to the machine by commenting out the line above,
-    # and uncommenting the line below.
-    # config.vm.network "public_network"
+    config.vm.network 'private_network', type: 'dhcp'
+
+    # Setup hostmanager for dhcp.
+    if Vagrant.has_plugin?('vagrant-hostmanager')
+        config.hostmanager.aliases = %W(#{vm_ext_conf['aliases'].compact.join(' ')})
+        config.hostmanager.enabled = true
+        config.hostmanager.manage_guest = true
+        config.hostmanager.manage_host = true
+
+        # Dynamically determine the IP address of the VM.
+        ip = ''
+        config.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+            if hostname = (vm.ssh_info && vm.ssh_info[:host])
+                vm.communicate.execute("/bin/hostname -I | cut -d ' ' -f 2") do |type, contents|
+                    ip = contents.split()[0]
+                end
+            end
+            ip
+        end
+      else
+        fail_with_message "vagrant-hostmanager missing, please install the plugin with this command:\nvagrant plugin install vagrant-hostmanager"
+      end
 
     # If true, then any SSH connections made will enable agent forwarding.
     # Default value: false
