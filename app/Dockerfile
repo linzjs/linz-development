@@ -8,8 +8,7 @@ ADD root/app/package.json /app/
 
 # Install the NPM modules.
 RUN cd /app && \
-    npm install --production && \
-    rm -f /app/.npmrc
+    npm install --production
 
 # Copy across the source for the app
 ADD root /

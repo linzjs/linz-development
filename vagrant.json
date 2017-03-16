@@ -1,10 +1,9 @@
 {
-    "hostname": "linz-dev.localhost",
-    "ip": "192.168.200.6",
+    "hostname": "linzdev",
+    "hostAliases": "dev.linz.local docs.linz.local",
     "memory": 1024,
     "cpus": 1,
     "env": {
         "NODE_ENV": "development"
-    },
-    "timezone": "Australia/Adelaide"
+    }
 }

@@ -5,6 +5,11 @@ source /vagrant/vagrant/bashurator/init.sh
 # Setup the environment.
 configure_apt_get() {
 
+    apt-get update
+
+    # Required for add-apt-repository
+    apt-get install -y software-properties-common build-essential zip unzip
+
     # Required for nodejs
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
@@ -15,8 +20,8 @@ configure_apt_get() {
     # Required for the latest Git
     add-apt-repository ppa:git-core/ppa
 
-    # Required for add-apt-repository
-    apt-get install -y software-properties-common build-essential
+    # Required for latest Ruby.
+    apt-add-repository ppa:brightbox/ruby-ng
 
     # update apt-get
     apt-get update

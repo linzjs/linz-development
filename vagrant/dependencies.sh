@@ -24,8 +24,8 @@ configure_dependencies() {
     # install bower
     npm install -g bower
 
-    # setup a symlink to linz
-    ln -s /usr/lib/node_modules/linz /linz
+    # Install Travis CLI.
+    gem install travis -v 1.8.5 --no-rdoc --no-ri
 
 }
 

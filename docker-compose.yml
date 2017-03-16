@@ -6,6 +6,7 @@ services:
     environment:
       - "NODE_ENV=development"
       - "DB_HOST=db"
+      - "DEBUG=linz:*"
     volumes:
       - /vagrant/app/root/app:/app
       - /linz:/app/node_modules/linz
