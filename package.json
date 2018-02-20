@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "linz-development",
+  "version": "1.0.0",
+  "description": "The Linz development environment.",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linzjs/linz-development.git"
+  },
+  "author": "Scott Mebberson",
+  "bugs": {
+    "url": "https://github.com/linzjs/linz-development/issues"
+  },
+  "homepage": "https://github.com/linzjs/linz-development#readme",
+  "dependencies": {
+    "gulp": "3.9.1",
+    "gulp-run": "1.7.1",
+    "gulp-task-listing": "1.0.1"
+  }
+}
