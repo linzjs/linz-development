@@ -18,15 +18,6 @@ configure_dependencies() {
         ln -s /linz /usr/lib/node_modules/linz
     fi
 
-    # install gulp
-    npm install -g gulp
-
-    # install bower
-    npm install -g bower
-
-    # Install Travis CLI.
-    gem install travis -v 1.8.5 --no-rdoc --no-ri
-
 }
 
 # Execute the function above, in an idempotent function.

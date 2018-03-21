@@ -1,9 +1,8 @@
 {
-    "hostname": "linzdev",
-    "hostAliases": "dev.linz.local docs.linz.local",
-    "memory": 1024,
+    "box_path": "idearium/ubuntu-16.04",
+    "box_version": "1.2.0",
     "cpus": 1,
-    "env": {
-        "NODE_ENV": "development"
-    }
+    "hostAliases": "dev.linz.local docs.linz.local",
+    "hostname": "linzdev",
+    "memory": 512
 }
